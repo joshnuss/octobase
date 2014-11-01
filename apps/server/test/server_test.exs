@@ -1,4 +1,4 @@
-defmodule OctobaseTest do
+defmodule Octobase.ServerTest do
   use ExUnit.Case
 
   test "the truth" do

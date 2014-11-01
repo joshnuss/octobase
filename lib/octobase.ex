@@ -1,2 +1,0 @@
-defmodule Octobase do
-end
