@@ -32,3 +32,69 @@ There 3 ways to communicate with Octobase:
 
 ## Querying
 
+Queries are done with a query language very similar to SQL, the main difference is that it understands json.
+
+```
+SELECT {name: people.name, age: year(today() - people.birthdate)}
+FROM people
+WHERE birthdate < date('1990-01-01')
+```
+
+You can also include relationships via the INCLUDE clause
+
+```
+SELECT * FROM people INCLUDE cities
+```
+
+```json
+[
+  {name: "John", city: {name: "New York", state: "NY"}},
+  {name: "Jane", city: {name: "Los Angeles", state: "CA"}},
+  ...
+]
+```
+
+### Inserting
+
+Data is inserted in a JSON format
+
+```
+INSERT INTO people
+{name: "Jane", birthdate: date('1980-01-01')}
+```
+
+Relationships can also be inserted at the same time, in this example a city record is also created
+
+```
+INSERT INTO people
+{name: "Jane", city: {name: "Los Angeles", state: "CA"}}
+```
+
+If the `id` of the city is known, that can be used instead
+
+```
+INSERT INTO people
+{name: "Jane", _city: 1234}
+```
+
+Bulk inserts are done with arrays of JSON
+
+```
+INSERT INTO people
+[
+  {name: "Jane", birthdate: date('1980-01-01')},
+  {name: "John", birthdate: date('1980-01-01')}
+]
+```
+
+### Updating
+
+```
+UPDATE people SET {name: "John"} WHERE name = 'Jane'
+```
+
+### Deleting
+
+```
+DELETE FROM people WHERE name = 'Jane'
+```
