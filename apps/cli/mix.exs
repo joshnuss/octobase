@@ -15,7 +15,7 @@ defmodule Octobase.CLI.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :octobase_client]]
   end
 
   # Dependencies can be Hex packages:
@@ -32,11 +32,10 @@ defmodule Octobase.CLI.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [{:client, in_umbrella: true}]
   end
 
   def escript do
-    path = Path.expand("../../octo", File.cwd!)
     [main_module: Octobase.CLI, name: "octo", path: "../../bin/octo"]
   end
 end
