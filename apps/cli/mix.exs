@@ -37,6 +37,6 @@ defmodule Octobase.CLI.Mixfile do
 
   def escript do
     path = Path.expand("../../octo", File.cwd!)
-    [main_module: Octobase.CLI, name: "octo", path: "../../octo"]
+    [main_module: Octobase.CLI, name: "octo", path: "../../bin/octo"]
   end
 end
