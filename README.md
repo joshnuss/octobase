@@ -23,7 +23,7 @@ A relational/document hybrid database using Elixir
 
 ## Command Interfaces
 
-There 3 ways to communicate with Octobase:
+There 4 ways to communicate with Octobase:
 
 - Using the CLI `octo`
 - Via TCP protocol (uses BSON format)
