@@ -7,6 +7,7 @@ defmodule Octobase.CLI.Mixfile do
      deps_path: "../../deps",
      lockfile: "../../mix.lock",
      elixir: "~> 1.0.0",
+     escript: escript,
      deps: deps]
   end
 
@@ -32,5 +33,10 @@ defmodule Octobase.CLI.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     []
+  end
+
+  def escript do
+    path = Path.expand("../../octo", File.cwd!)
+    [main_module: Octobase.CLI, name: "octo", path: "../../octo"]
   end
 end
