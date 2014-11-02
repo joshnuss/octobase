@@ -23,7 +23,7 @@ shape -> all : all.
 shape -> dict : '$1'.
 shape -> expressions : '$1'.
 
-dict -> '{' keypairs '}' : '$2'.
+dict -> '{' keypairs '}' : maps:from_list('$2').
 
 keypairs -> '$empty' : [].
 keypairs -> keypair : ['$1'].
@@ -31,6 +31,7 @@ keypairs -> keypairs ',' keypair : '$1' ++ ['$3'].
 
 keypair -> string ':' expression : {unwrap('$1'), '$3'}.
 keypair -> var ':' expression : {unwrap('$1'), '$3'}.
+keypair -> var ':' dict : {unwrap('$1'), '$3'}.
 
 where_clause -> '$empty' : {}.
 where_clause -> where predicates : '$2'.
