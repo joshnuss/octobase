@@ -98,3 +98,10 @@ UPDATE people SET {name: "John"} WHERE name = 'Jane'
 ```
 DELETE FROM people WHERE name = 'Jane'
 ```
+
+### Relationships
+
+```
+CREATE RELATIONSHIP order HAS MANY line_items
+CREATE RELATIONSHIP order HAS ONE user AS owner
+```
