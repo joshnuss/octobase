@@ -48,8 +48,8 @@ SELECT * FROM people INCLUDE cities
 
 ```json
 [
-  {name: "John", city: {name: "New York", state: "NY"}},
-  {name: "Jane", city: {name: "Los Angeles", state: "CA"}},
+  {"name": "John", "city": {"name": "New York", "state": "NY"}},
+  {"name": "Jane", "city": {"name": "Los Angeles", "state": "CA"}},
   ...
 ]
 ```
