@@ -30,6 +30,7 @@ keypairs -> keypair : ['$1'].
 keypairs -> keypairs ',' keypair : '$1' ++ ['$3'].
 
 keypair -> string ':' expression : {unwrap('$1'), '$3'}.
+keypair -> string ':' dict : {unwrap('$1'), '$3'}.
 keypair -> var ':' expression : {unwrap('$1'), '$3'}.
 keypair -> var ':' dict : {unwrap('$1'), '$3'}.
 
