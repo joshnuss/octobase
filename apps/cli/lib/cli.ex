@@ -39,13 +39,14 @@ defmodule Octobase.CLI do
   end
 
   defp eval(text) do
-    {:ok, tokens, _} = text |> to_char_list |> :command_lexer.string
-    {:ok, ast} = :command_parser.parse(tokens)
-
-    ast
+    Octobase.Server.command(text)
   end
 
-  defp print(result) do
-    IO.inspect result
+  defp print({:ok, result}) do
+    IO.puts(result |> inspect |> Colors.green)
+  end
+
+  defp print({:error, type, description}) do
+    IO.puts "#{Colors.bold("ERROR")} #{type}: #{Colors.bold(description)}" |> Colors.red
   end
 end

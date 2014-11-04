@@ -32,7 +32,9 @@ defmodule Octobase.CLI.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:client, in_umbrella: true}, {:server, in_umbrella: true}]
+    [{:client, in_umbrella: true},
+     {:colors, "~> 1.0.1"},
+     {:server, in_umbrella: true}]
   end
 
   def escript do
